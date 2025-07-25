@@ -1,4 +1,4 @@
-FROM eclipse-temurin:17-jdk-alpine
+FROM openjdk:21-jdk-slim
 
 # Mejora de rendimiento al iniciar Spring Boot
 ENV JAVA_OPTS="-Djava.security.egd=file:/dev/./urandom"
