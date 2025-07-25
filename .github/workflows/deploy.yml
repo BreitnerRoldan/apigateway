@@ -7,7 +7,7 @@ on:
 
 env:
   JWT_SECRET: ${{ secrets.JWT_SECRET }}
-  IMAGE_NAME: ghcr.io/${{ github.repository }}
+  IMAGE_NAME: ghcr.io/breitnerroldan/apigateway
 
 jobs:
   build-and-push:
