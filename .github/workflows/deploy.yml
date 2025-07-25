@@ -1,0 +1,20 @@
+env:
+  JWT_SECRET: ${{ secrets.JWT_SECRET }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Configurar JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Build con Maven
+        run: mvn clean package
+        env:
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
