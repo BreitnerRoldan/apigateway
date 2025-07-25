@@ -16,6 +16,7 @@ public class LoggingFilter implements GlobalFilter, Ordered {
 	
 		String path = exchange.getRequest().getURI().getPath();
 		String method = exchange.getRequest().getMethod().name();
+		
 		System.out.println("Solicitud Recibida: " + method + " " + path);
 		
 		return chain.filter(exchange)
