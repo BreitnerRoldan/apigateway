@@ -37,7 +37,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t $REPO_LC/apigateway:latest -f gateway/Dockerfile .
+          docker build -t $REPO_LC/apigateway:latest .
 
       - name: Push Docker image
         run: |
