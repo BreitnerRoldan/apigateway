@@ -7,7 +7,7 @@ ENV JAVA_OPTS="-Djava.security.egd=file:/dev/./urandom"
 WORKDIR /app
 
 # Copiar el jar al contenedor
-COPY target/api-gateway-0.0.1-SNAPSHOT.jar app.jar
+COPY target/ApiGateway-0.0.1-SNAPSHOT.jar app.jar
 
 # Exponer el puerto del gateway
 EXPOSE 8085
