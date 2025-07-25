@@ -16,7 +16,7 @@ import reactor.core.publisher.Mono;
 @Component
 public class JwtAuthenticationFilter implements GlobalFilter, Ordered {
 
-	@Value("${jwt.secret}")
+	@Value("#{systemEnvironment['JWT_SECRET']}")
 	private String secret;
 
 	@Override

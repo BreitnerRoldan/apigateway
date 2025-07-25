@@ -9,6 +9,7 @@ spring:
     gateway:
       routes:
         - id: studytrack
-          uri: http://user_service_app:8080
+          uri: http://studytrack-container:8081
           predicates:
-            - Path=/api/cuenta/**,/api/user/**
+            - Path=/api/cuenta/**
+            - Path=/api/user/**

@@ -1,7 +1,10 @@
 api-gateway:
   build:
     context: ./api-gateway
+  container_name: api_gateway
   ports:
-    - "8080:8080"
+    - "8085:8085"
+  environment:
+    JWT_SECRET: f17155e9e7fcf6b8671d573b93f65b60ddb02b660d5d131c041246376a91a1b970145a8afb3c94ab10e4e3f5ef7171cbc70d6491f382a7d2f27b93aa148a566a
   depends_on:
-    - studytrack
+    - app
