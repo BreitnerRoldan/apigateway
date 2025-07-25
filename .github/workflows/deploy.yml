@@ -1,9 +1,18 @@
+name: Build y Deploy API Gateway
+
+on:
+  push:
+    branches:
+      - main
+
 env:
   JWT_SECRET: ${{ secrets.JWT_SECRET }}
+  IMAGE_NAME: ghcr.io/${{ github.repository }}
 
 jobs:
-  build:
+  build-and-push:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout código
         uses: actions/checkout@v4
@@ -18,3 +27,15 @@ jobs:
         run: mvn clean package
         env:
           JWT_SECRET: ${{ secrets.JWT_SECRET }}
+
+      - name: Login en GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Construir y subir imagen Docker
+        run: |
+          docker build -t $IMAGE_NAME:latest .
+          docker push $IMAGE_NAME:latest
