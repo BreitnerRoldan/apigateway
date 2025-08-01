@@ -28,8 +28,14 @@ public class JwtAuthenticationFilter implements GlobalFilter, Ordered {
 	@Override
 	public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
 
+		String path = exchange.getRequest().getPath().toString();
+		
+		if(path.startsWith("/api/users/register") || path.startsWith("/api/users/login")) {
+			return chain.filter(exchange);
+		}
+		
 		String authHeader = exchange.getRequest().getHeaders().getFirst(HttpHeaders.AUTHORIZATION);
-
+		
 		if (authHeader == null || !authHeader.startsWith("Bearer")) {
 			exchange.getResponse().setStatusCode(org.springframework.http.HttpStatus.UNAUTHORIZED);
 

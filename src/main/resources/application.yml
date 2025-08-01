@@ -1,15 +1,14 @@
 jwt:
-  secret: ${JWT_SECRET} # Se obtiene desde GitHub Actions u otro entorno
+  secret: f17155e9e7fcf6b8671d573b93f65b60ddb02b660d5d131c041246376a91a1b970145a8afb3c94ab10e4e3f5ef7171cbc70d6491f382a7d2f27b93aa148a566a
 
 server:
-  port: 8085 # Puerto en el que escucha el API Gateway
+  port: 8085
 
 spring:
   cloud:
     gateway:
       routes:
-        - id: studytrack
-          uri: http://studytrack-container:8081
+        - id: user-service
+          uri: http://localhost:8081 ##http://user-service:8081
           predicates:
-            - Path=/api/cuenta/**
-            - Path=/api/user/**
+            - Path=/api/users/**,/Path=/api/cuenta/**
